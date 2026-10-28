@@ -1,4 +1,6 @@
-import express from "express";
+
+import express from 'express';
+import medicoRouter from './routers/medico.router';
 import recetaRouter from "./routers/recetaRouter";
 import citaRouter from "./routers/cita.router";
 
@@ -19,6 +21,7 @@ app.get("/", (req, res) => {
 
 //Rutas de cada table
 app.use("/api/recetas", recetaRouter);
+app.use("/api/medicos", medicoRouter);
 
 app.listen(PORT, () => {
   console.log(`Servidor corriendo en http://localhost:${PORT}`);
