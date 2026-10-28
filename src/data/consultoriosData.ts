@@ -1,0 +1,116 @@
+export interface Usuarios {
+  id: number;
+  numeroSala: number;
+  piso: number;
+  activo: boolean;
+  tipoAtencion:string;
+}
+
+export let estudiantesFunvaleros: Usuarios[] = [
+  {
+    id: 1,
+    numeroSala: 101,
+    piso: 1,
+    activo: true,
+    tipoAtencion:"General",
+  },
+  {
+    id: 2,
+    numeroSala: 102,
+    piso: 1,
+    activo: false,
+    tipoAtencion:"General",
+  },
+  {
+    id: 3,
+    numeroSala: 103,
+    piso: 1,
+    activo: false,
+    tipoAtencion:"General",
+  },
+  {
+    id: 4,
+    numeroSala: 104,
+    piso: 2,
+    activo: true,
+    tipoAtencion:"Familiar",
+  },
+  {
+    id: 5,
+    numeroSala: 105,
+    piso: 2,
+    activo: true,
+    tipoAtencion:"Familiar",
+  },
+  {
+    id: 6,
+    numeroSala: 106,
+    piso: 2,
+    activo: false,
+    tipoAtencion:"Pediatría",
+  },
+  {
+    id: 7,
+    numeroSala: 107,
+    piso: 3,
+    activo: true,
+    tipoAtencion:"Cirugia",
+  },
+  {
+    id: 8,
+    numeroSala: 108,
+    piso: 3,
+    activo: true,
+    tipoAtencion:"Cirugia",
+  },
+  {
+    id: 9,
+    numeroSala: 109,
+    piso: 3,
+    activo: false,
+    tipoAtencion:"Cirugia",
+  },
+  {
+    id: 10,
+    numeroSala: 110,
+    piso: 4,
+    activo: true,
+    tipoAtencion:"Medicina Interna",
+  },
+  {
+    id: 11,
+    numeroSala: 111,
+    piso: 4,
+    activo: true,
+    tipoAtencion:"Medicina Interna",
+  },
+  {
+    id: 12,
+    numeroSala: 112,
+    piso: 4,
+    activo: false,
+    tipoAtencion:"Ginecologia",
+  },
+  {
+    id: 13,
+    numeroSala: 113,
+    piso: 5,
+    activo: true,
+    tipoAtencion:"Cardiologia",
+  },
+  {
+    id: 14,
+    numeroSala: 114,
+    piso: 5,
+    activo: false,
+    tipoAtencion:"Neurologia",
+  },
+  {
+    id: 15,
+    numeroSala: 115,
+    piso: 5,
+    activo: true,
+    tipoAtencion:"Oncologia",
+  },
+ 
+];
