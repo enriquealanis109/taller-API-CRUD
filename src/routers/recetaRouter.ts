@@ -14,6 +14,6 @@ router.get("/", obtenerRecetas);
 router.get("/:id", obtenerRecetasId);
 router.post("/", validarReceta, crearReceta);
 router.put("/:id", validarReceta, actualizarReceta);
-router.delete(":id", eliminarReceta);
+router.delete("/:id", eliminarReceta);
 
 export default router;
