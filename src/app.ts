@@ -5,6 +5,7 @@ import citaRouter from "./routers/cita.router";
 import recetaRouter from "./routers/recetaRouter";
 import swaggerUi from "swagger-ui-express";
 
+
 const swaggerDocument = require("./swagger-output.json");
 const app = express();
 const PORT = 3000;
