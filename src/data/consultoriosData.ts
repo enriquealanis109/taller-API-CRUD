@@ -1,12 +1,5 @@
-export interface Usuarios {
-  id: number;
-  numeroSala: number;
-  piso: number;
-  activo: boolean;
-  tipoAtencion:string;
-}
-
-export let estudiantesFunvaleros: Usuarios[] = [
+import { Consultorio } from "../interfaces/consultoriosInterfaces";
+export let consultorios: Consultorio[] = [
   {
     id: 1,
     numeroSala: 101,
