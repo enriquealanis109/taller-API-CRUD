@@ -5,11 +5,50 @@ import { citas } from "../data/cita.data";
 let siguienteId: number = 1;
 
 export function listarCitas(req: Request, res: Response) {
+// #swagger.tags = ['Citas']
+// #swagger.summary = 'Listar citas'
+// #swagger.description = 'Devuelve todas las citas médicas registradas'
     res.status(200).json(citas);
 }
 
 export function crearCita(req: Request, res: Response) {
-    const { pacienteId, medicoId, fechaHora, estado } = req.body;
+// #swagger.tags = ['Citas']
+// #swagger.summary = 'Crear una cita'
+// #swagger.description = 'Registra una cita con paciente, médico, fecha y estado. El servidor genera el ID'
+
+/*
+  #swagger.requestBody = {
+    required: true,
+    content: {
+      "application/json": {
+        schema: {
+          type: "object",
+          required: ["pacienteId", "medicoId", "fechaHora", "estado"],
+          properties: {
+            pacienteId: {
+              type: "integer",
+              example: 1
+            },
+            medicoId: {
+              type: "integer",
+              example: 2
+            },
+            fechaHora: {
+              type: "string",
+              example: "2026-11-02T10:30:00"
+            },
+            estado: {
+              type: "string",
+              enum: ["pendiente", "atendido"],
+              example: "pendiente"
+            }
+          }
+        }
+      }
+    }
+  }
+*/
+const { pacienteId, medicoId, fechaHora, estado } = req.body;
 
     const nuevaCita: Cita = {
         id: siguienteId,
@@ -26,6 +65,9 @@ export function crearCita(req: Request, res: Response) {
 }
 
 export function buscarCitaPorId(req: Request, res: Response) {
+// #swagger.tags = ['Citas']
+// #swagger.summary = 'Buscar una cita por ID'
+// #swagger.description = 'Devuelve una cita específica. Responde 404 si no existe'
     const idBuscando = Number(req.params.id);
 
     const citaEncontrada = citas.find(
@@ -43,7 +85,43 @@ export function buscarCitaPorId(req: Request, res: Response) {
 }
 
 export function actualizarCita(req: Request, res: Response) {
-    const idBuscando = Number(req.params.id);
+// #swagger.tags = ['Citas']
+// #swagger.summary = 'Actualizar una cita'
+// #swagger.description = 'Actualiza los datos de una cita existente conservando su ID'
+
+/*
+  #swagger.requestBody = {
+    required: true,
+    content: {
+      "application/json": {
+        schema: {
+          type: "object",
+          required: ["pacienteId", "medicoId", "fechaHora", "estado"],
+          properties: {
+            pacienteId: {
+              type: "integer",
+              example: 1
+            },
+            medicoId: {
+              type: "integer",
+              example: 2
+            },
+            fechaHora: {
+              type: "string",
+              example: "2026-11-02T10:30:00"
+            },
+            estado: {
+              type: "string",
+              enum: ["pendiente", "atendido"],
+              example: "pendiente"
+            }
+          }
+        }
+      }
+    }
+  }
+*/
+const idBuscando = Number(req.params.id);
 
     const citaEncontrada = citas.find(
         (cita) => cita.id === idBuscando
@@ -67,6 +145,9 @@ export function actualizarCita(req: Request, res: Response) {
 }
 
 export function eliminarCita(req: Request, res: Response) {
+// #swagger.tags = ['Citas']
+// #swagger.summary = 'Eliminar una cita'
+// #swagger.description = 'Elimina del arreglo la cita indicada por su ID.'
     const idBuscando = Number(req.params.id);
 
     const posicion = citas.findIndex(
