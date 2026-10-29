@@ -7,6 +7,9 @@ let nuevoId = recetas.length + 1;
 
 //GET - Obtener recetas
 export const obtenerRecetas = (req: Request, res: Response) => {
+  /* #swagger.tags = ['Recetas']
+     #swagger.description = 'Endpoint para obtener todas las recetas'
+  */
   res.status(200).json({
     ok: true,
     data: recetas,
@@ -15,7 +18,23 @@ export const obtenerRecetas = (req: Request, res: Response) => {
 
 //Get por ID
 export const obtenerRecetasId = (req: Request, res: Response) => {
+  /* #swagger.tags = ['Recetas']
+     #swagger.description = 'Endpoint para obtener una receta por su ID'
+     #swagger.parameters['id'] = {
+       description: 'ID de la receta',
+       type: 'integer',
+       required: true,
+       example: 1
+     }
+  */
   const id = Number(req.params.id);
+  if (!id || id <= 0) {
+    res.status(400).json({
+      ok: false,
+      mensaje: "El id debe ser un número mayor a 0",
+    });
+    return;
+  }
   const receta = recetas.find((r) => r.id === id);
 
   if (!receta) {
@@ -34,6 +53,20 @@ export const obtenerRecetasId = (req: Request, res: Response) => {
 
 //POST Crear una nueva receta
 export const crearReceta = (req: Request, res: Response) => {
+  /* #swagger.tags = ['Recetas']
+     #swagger.description = 'Endpoint para crear una receta nueva'
+     #swagger.parameters['body'] = {
+       in: 'body',
+       description: 'Datos de la receta a crear',
+       required: true,
+       schema: {
+         citaId: 1,
+         medicamentos: "Paracetamol 500mg",
+         indicaciones: "Tomar cada 8 horas",
+         fechaEmision: "2026-10-29"
+       }
+     }
+  */
   const { citaId, medicamentos, indicaciones, fechaEmision } = req.body;
 
   const nuevaReceta: Receta = {
@@ -56,9 +89,35 @@ export const crearReceta = (req: Request, res: Response) => {
 
 //PUT actualizar una existente
 export const actualizarReceta = (req: Request, res: Response) => {
+  /* #swagger.tags = ['Recetas']
+     #swagger.description = 'Endpoint para actualizar una receta existente'
+     #swagger.parameters['id'] = {
+       description: 'ID de la receta',
+       type: 'integer',
+       required: true,
+       example: 1
+     }
+     #swagger.parameters['body'] = {
+       in: 'body',
+       description: 'Datos nuevos de la receta',
+       required: true,
+       schema: {
+         citaId: 1,
+         medicamentos: "Paracetamol 500mg",
+         indicaciones: "Tomar cada 8 horas",
+         fechaEmision: "2026-10-29"
+       }
+     }
+  */
   const id = Number(req.params.id);
+  if (!id || id <= 0) {
+    res.status(400).json({
+      ok: false,
+      mensaje: "El id debe ser un número mayor a 0",
+    });
+    return;
+  }
   const receta = recetas.find((r) => r.id === id);
-
   if (!receta) {
     res.status(404).json({
       ok: false,
@@ -82,7 +141,23 @@ export const actualizarReceta = (req: Request, res: Response) => {
 
 //Delete
 export const eliminarReceta = (req: Request, res: Response) => {
+  /* #swagger.tags = ['Recetas']
+     #swagger.description = 'Endpoint para eliminar una receta por su ID'
+     #swagger.parameters['id'] = {
+       description: 'ID de la receta',
+       type: 'integer',
+       required: true,
+       example: 1
+     }
+  */
   const id = Number(req.params.id);
+  if (!id || id <= 0) {
+    res.status(400).json({
+      ok: false,
+      mensaje: "El id debe ser un número mayor a 0",
+    });
+    return;
+  }
   const indice = recetas.findIndex((r) => r.id === id);
 
   if (indice === -1) {
