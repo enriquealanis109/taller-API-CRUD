@@ -25,6 +25,13 @@ export const medicos: Medico[] = [
   {
     id: 4,
     matricula: 'MED-1004',
+    nombreCompleto: 'Dr. Esdras Blanco',
+    especialidad: 'Traumatología',
+    aniosExperiencia: 20
+  },
+  {
+    id: 5,
+    matricula: 'MED-1005',
     nombreCompleto: 'Dra. Leonardo miranda',
     especialidad: 'Odontología',
     aniosExperiencia: 5
