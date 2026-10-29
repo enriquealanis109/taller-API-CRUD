@@ -5,10 +5,11 @@ const doc = {
     title: "API MediCare",
     description: "Sistema de Gestion Hospitalaria - Taller integrador",
   },
-  servers: [{ url: "http://localhost:3000" }],
+  host: "localhost:3000",
+  schemes: ["http"],
 };
 
 const outputFile = "./swagger-output.json";
 const routes = ["./src/app.ts"];
 
-swaggerAutogen({ openapi: "3.0.0" })(outputFile, routes, doc);
+swaggerAutogen()(outputFile, routes, doc);
