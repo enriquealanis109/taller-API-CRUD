@@ -1,6 +1,7 @@
 import express from "express";
 import pacientesRouter from "./routers/pacientesRouters";
 import medicoRouter from "./routers/medico.router";
+import consultorioRouter from "./routers/consultoriosRouters";
 import citaRouter from "./routers/cita.router";
 import recetaRouter from "./routers/recetaRouter";
 import swaggerUi from "swagger-ui-express";
@@ -23,6 +24,7 @@ app.get("/", (req, res) => {
 //Rutas de cada tabla
 app.use("/api/pacientes", pacientesRouter);
 app.use("/api/medicos", medicoRouter);
+app.use("/api/consultorios", consultorioRouter);
 app.use("/api/citas", citaRouter);
 app.use("/api/recetas", recetaRouter);
 

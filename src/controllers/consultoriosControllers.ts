@@ -1,5 +1,6 @@
 import type { Response, Request } from "express";
-import { type Consultorios, consultorios } from "../data/consultorios.ts";
+import type { Consultorio } from "../interfaces/consultoriosInterfaces";
+import { consultorios } from "../data/consultoriosData";
 
 let idCounter = consultorios.length > 0 ? Math.max(...consultorios.map(c => c.id ?? 0)) + 1 : 1;
 
@@ -14,7 +15,7 @@ export function traerTodosLosConsultorios(req: Request, res: Response) {
 export function traerUnConsultorio(req: Request, res: Response) {
   let idBuscado = Number(req.params.id);
   let consultorioEncontrado = consultorios.find(
-    (e: Consultorios) => e.id === idBuscado,
+    (e: Consultorio) => e.id === idBuscado,
   );
 
   if (!consultorioEncontrado) {
@@ -34,7 +35,7 @@ export function traerUnConsultorio(req: Request, res: Response) {
 export function crearConsultorio(req: Request, res: Response) {
   const { numeroSala, piso, activo, tipoAtencion } = req.body;
 
-  const nuevoConsultorio: Consultorios = {
+  const nuevoConsultorio: Consultorio = {
     id: idCounter++,
     numeroSala,
     piso,
@@ -54,7 +55,7 @@ export function crearConsultorio(req: Request, res: Response) {
 export function actualizarConsultorio(req: Request, res: Response) {
   let idBuscado = Number(req.params.id);
   let indiceEncontrado = consultorios.findIndex(
-    (c: Consultorios) => c.id === idBuscado
+    (c: Consultorio) => c.id === idBuscado
   );
 
   if (indiceEncontrado === -1) {
@@ -85,7 +86,7 @@ export function actualizarConsultorio(req: Request, res: Response) {
 export function eliminarConsultorio(req: Request, res: Response) {
   let idBuscado = Number(req.params.id);
   let indiceEncontrado = consultorios.findIndex(
-    (c: Consultorios) => c.id === idBuscado
+    (c: Consultorio) => c.id === idBuscado
   );
 
   if (indiceEncontrado === -1) {
