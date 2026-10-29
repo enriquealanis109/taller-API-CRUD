@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "tsx watch src/app.ts"
+    "dev": "npm run swagger && tsx watch src/app.ts",
+    "swagger": "tsx src/swagger.ts"
   },
   "repository": {
     "type": "git",
@@ -20,11 +21,14 @@
   },
   "homepage": "https://github.com/enriquealanis109/taller-API-CRUD#readme",
   "dependencies": {
-    "express": "^5.3.0"
+    "express": "^5.3.0",
+    "swagger-ui-express": "^5.0.1"
   },
   "devDependencies": {
     "@types/express": "^5.0.6",
     "@types/node": "^26.6.6",
+    "@types/swagger-ui-express": "^4.1.8",
+    "swagger-autogen": "^2.23.7",
     "tsx": "^4.23.15",
     "typescript": "^7.0.2"
   }
