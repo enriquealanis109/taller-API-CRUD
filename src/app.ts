@@ -1,3 +1,6 @@
+//Pacientes
+import express from 'express';
+import pacientesRouter from './routers/pacientesRouters';
 
 import express from 'express';
 import medicoRouter from './routers/medico.router';
@@ -8,6 +11,13 @@ const app = express();
 const PORT = 3000;
 
 app.use(express.json());
+app.use('/pacientes', pacientesRouter);
+
+app.listen(PORT, () => {
+    console.log(`Servidor corriendo en http://localhost:${PORT}`);
+});
+
+export default app;
 
 app.use("/api/citas", citaRouter);
 
