@@ -1,10 +1,10 @@
 import { Request, Response, NextFunction } from 'express';
-import { Consultorio } from '../interfaces/consultorio.interface';
+import { Consultorio } from '../interfaces/consultoriosInterfaces';
 
 export const validarConsultorio = (req: Request, res: Response, next: NextFunction): void => {
   const { numeroSala, piso, activo, tipoAtencion } = req.body as Partial<Consultorio>;
 
-  if (!numeroSala || typeof numeroSala !== 'string' || numeroSala.trim() === '') {
+  if (!numeroSala || typeof numeroSala !== 'string' || !numeroSala) {
     res.status(400).json({ ok: false, error: 'El campo "numeroSala" es obligatorio y debe ser texto.' });
     return;
   }
@@ -19,7 +19,7 @@ export const validarConsultorio = (req: Request, res: Response, next: NextFuncti
     return;
   }
 
-  if (!tipoAtencion || typeof tipoAtencion !== 'string' || tipoAtencion.trim() === '') {
+  if (!tipoAtencion || typeof tipoAtencion !== 'string' || !tipoAtencion) {
     res.status(400).json({ ok: false, error: 'El campo "tipoAtencion" es obligatorio y debe ser texto.' });
     return;
   }
